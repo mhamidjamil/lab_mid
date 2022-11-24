@@ -1,0 +1,46 @@
+//identify ether input can be a identifier or not
+#include<stdio.h>
+//#include<stdlib.h>
+
+int SizeFinder(char inputChar[15]) {
+    int i = 0;
+    while (inputChar[i] != '\0') {
+        i++;
+    }
+    return i;
+}
+
+int main() {
+    char userInput[20];
+    int validIdentifier = 0;
+    int inputCharSize;
+    int i;
+//    int alier = 0;
+    printf("Enter numeric data : ");
+    scanf("%s", userInput);
+    inputCharSize = SizeFinder(userInput);
+//    printf("%d", inputCharSize);
+
+
+
+    for (i = 0; i < inputCharSize; i++) {
+        if (i == 0 && (userInput[i] >= '0' && userInput[i] <= '9') || userInput[i] == '-') {
+
+            printf("Invalid Identifier");
+            return 0;
+        } else if ((userInput[i] >= 'a' && userInput[i] <= 'z') || (userInput[i] >= 'A' && userInput[i] <= 'Z') ||
+                   userInput[i] == '_' || (userInput[i] >= '0' && userInput[i] <= '9')) {
+            validIdentifier = 1;
+        } else {
+//            validIdentifier = 0;
+            printf("Invalid Identifier");
+            return 0;
+        }
+    }
+    if (validIdentifier == 1) {
+        printf("%s is a valid identifier", userInput);
+    } else {
+        printf("%s is not a valid identifier", userInput);
+    }
+    return 0;
+}
